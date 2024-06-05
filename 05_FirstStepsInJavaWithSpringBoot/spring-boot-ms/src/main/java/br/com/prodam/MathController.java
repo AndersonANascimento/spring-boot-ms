@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.prodam.exceptions.UnsupportedMathOperationException;
+
 @RestController
 public class MathController {
 	private static final String template = "Hello %s!";
@@ -16,7 +18,7 @@ public class MathController {
 	public Double sum(@PathVariable(value = "num1") String num1, @PathVariable(value = "num2") String num2)
 			throws Exception {
 		if (!isNumeric(num1) || !isNumeric(num2)) {
-			throw new Exception();
+			throw new UnsupportedMathOperationException("Please set a numeric value");
 		}
 		return convertToDouble(num1) + convertToDouble(num2);
 	}
