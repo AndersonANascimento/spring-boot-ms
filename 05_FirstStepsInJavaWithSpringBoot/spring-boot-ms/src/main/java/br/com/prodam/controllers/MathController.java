@@ -64,8 +64,7 @@ public class MathController {
 	}
 
 	@RequestMapping(value = "/sqrt/{num1}", method = RequestMethod.GET)
-	public Double sqrt(@PathVariable(value = "num1") String num1)
-			throws Exception {
+	public Double sqrt(@PathVariable(value = "num1") String num1) throws Exception {
 		if (!NumberConverter.isNumeric(num1)) {
 			throw new UnsupportedMathOperationException(numericMessage);
 		}

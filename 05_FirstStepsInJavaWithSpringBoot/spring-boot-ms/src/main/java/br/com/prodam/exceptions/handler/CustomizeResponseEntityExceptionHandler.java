@@ -17,22 +17,25 @@ import br.com.prodam.exceptions.UnsupportedMathOperationException;
 @ControllerAdvice
 @RestController
 public class CustomizeResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-    
-    @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
 
-    @ExceptionHandler(UnsupportedMathOperationException.class)
-    public final ResponseEntity<ExceptionResponse> handleBadRequestException(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-    }
+	@ExceptionHandler(Exception.class)
+	public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception e, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public final ResponseEntity<ExceptionResponse> handleNotFoundException(Exception e, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
-    }
+	@ExceptionHandler(UnsupportedMathOperationException.class)
+	public final ResponseEntity<ExceptionResponse> handleBadRequestException(Exception e, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public final ResponseEntity<ExceptionResponse> handleNotFoundException(Exception e, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), e.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
 }
