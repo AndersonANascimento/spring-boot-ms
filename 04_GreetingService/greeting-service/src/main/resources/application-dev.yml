@@ -1,0 +1,11 @@
+greeting-service:
+  greeting: "Olá"
+  default-value: "Desenvolvimento"
+  
+# Application Database Oracle Dev
+app:
+  datasource:
+    jdbcUrl: ${DB_URL:jdbc:oracle:thin:@//10.20.1.175:1521/oradds.prodam.com.br}
+    username: ${DB_USER:dbsispag}
+    password: ${DB_PASSWORD:xuyib7lba4es}
+    driver-class-name: oracle.jdbc.OracleDriver

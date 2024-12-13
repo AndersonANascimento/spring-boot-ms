@@ -1,14 +1,21 @@
 spring:
   application:
     name: greeting-service
+#  config:
+#    import: application.env
+  profiles:
+    active: default
+
 server:
-  port: 9091
+  port: 8080
+  
 management:
   endpoints:
     web:
       exposure:
         include:
         - '*'
+
 greeting-service:
   greeting: "Olá"
   default-value: "Mundo"
